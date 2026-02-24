@@ -3,7 +3,7 @@ import "./Home.css";
 
 
 export default function Home() {
-
+  const [searchTerm, setSearchTerm] = useState("");
   const categories = [
   {
     title: "Women Safety",
@@ -113,14 +113,20 @@ export default function Home() {
     emergencyNumber: "1919",
     description: "Government information and general public assistance hotline."
   }
-];
+  ];
+  const filteredCategories = categories.filter((category) =>
+  category.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  category.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
   const callnow = (number) => {
     window.location.href = `tel:${number}`;
   }
   return (<>
     <h1>Help Line<sup>+</sup></h1>
+    <input type="text" className="search" placeholder="Search..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
     <div className="categories-container">
-      {categories.map((category, index) => (
+      {filteredCategories.map((category, index) => (
         <div key={index} className="category-card">
           <img src={category.logo} alt={category.title} className="logo"/>
           <p><b>{category.title}</b><br />{category.description}</p>

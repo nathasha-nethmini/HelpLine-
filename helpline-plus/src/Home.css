@@ -2,7 +2,6 @@ h1{
   text-align: center;
   color: navy;
   padding-bottom: 2rem;
-  border-bottom: rgba(0, 0, 0, 0.582) solid 2px;
 }
 sup{
   color: red;
@@ -38,6 +37,7 @@ button{
 .category-card:hover button{
   transform: scale(1.05);
   background-color: red;
+  box-shadow: 0 0 5px rgb(203, 56, 56);
 }
 .logo {
   width: 60px;
@@ -46,4 +46,13 @@ button{
 }
 .call {
   width: 3rem;
+}
+.search {
+  width: 90%;
+  padding: 10px;
+  margin: 0 auto 20px auto;   
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  font-size: 16px;
+  display: block;           
 }
