@@ -122,20 +122,33 @@ export default function Home() {
   const callnow = (number) => {
     window.location.href = `tel:${number}`;
   }
-  return (<>
-    <h1>Help Line<sup>+</sup></h1>
-    <input type="text" className="search" placeholder="Search..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
-    <div className="categories-container">
-      {filteredCategories.map((category, index) => (
-        <div key={index} className="category-card">
-          <img src={category.logo} alt={category.title} className="logo"/>
-          <p><b>{category.title}</b><br />{category.description}</p>
-          <button onClick={() => callnow(category.emergencyNumber)}>call</button>
-          
-        </div>
-      ))}
-      <div ></div>
-    </div>
-    </>);
+
+  return (
+    <>
+      <h1>Help Line<sup>+</sup></h1>
+      <input
+        type="text"
+        className="search"
+        placeholder="Search for services..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="categories-container">
+        {filteredCategories.map((category, index) => (
+          <div key={index} className="category-card">
+            <img src={category.logo} alt={category.title} className="logo" />
+            <p>
+              <b>{category.title}</b>
+              <br />
+              {category.description}
+            </p>
+            <button onClick={() => callnow(category.emergencyNumber)}>
+              Call Now: {category.emergencyNumber}
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
+  );
     
 }
